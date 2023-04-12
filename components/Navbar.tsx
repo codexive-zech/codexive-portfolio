@@ -1,6 +1,5 @@
 "use client"; // this is a client component
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll/modules";
 import { useTheme } from "next-themes";
 import { RiMoonFill, RiSunLine } from "react-icons/ri";
@@ -10,7 +9,12 @@ import { NAV_LINKS } from "@/utils/data";
 export default function Navbar() {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
-  const [navbar, setNavbar] = useState(false);
+  const [navbar, setNavbar] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <header className="w-full mx-auto  px-4 sm:px-20 fixed top-0 z-50 shadow bg-white dark:bg-stone-900 dark:border-b dark:border-stone-600">
       <div className="justify-between md:items-center md:flex">
@@ -59,21 +63,23 @@ export default function Navbar() {
                   </Link>
                 );
               })}
-              {currentTheme === "dark" ? (
-                <button
-                  onClick={() => setTheme("light")}
-                  className="bg-slate-100 p-2 rounded-xl dark:text-neutral-900"
-                >
-                  <RiSunLine size={25} color="black" />
-                </button>
-              ) : (
-                <button
-                  onClick={() => setTheme("dark")}
-                  className="bg-slate-100 p-2 rounded-xl "
-                >
-                  <RiMoonFill size={25} />
-                </button>
-              )}
+              {mounted ? (
+                currentTheme === "dark" ? (
+                  <button
+                    onClick={() => setTheme("light")}
+                    className="bg-slate-100 p-2 rounded-xl dark:text-neutral-900"
+                  >
+                    <RiSunLine size={25} color="black" />
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setTheme("dark")}
+                    className="bg-slate-100 p-2 rounded-xl "
+                  >
+                    <RiMoonFill size={25} />
+                  </button>
+                )
+              ) : null}
             </div>
           </div>
         </div>
