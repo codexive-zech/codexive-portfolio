@@ -1,12 +1,13 @@
 # Portfolio Website
 
-This is a template for creating a portfolio
+This is my portfolio website Repo
 
 ## Running Locally
 
 Can run the application in VS Code or a terminal and it will be available at `http://localhost:3000`.
 
 ```bash
-npm install
+npm install 
+&
 npm run dev
 ```
