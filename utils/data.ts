@@ -95,6 +95,14 @@ export const projects: Projects[] = [
     githubLink: "https://github.com/codexive-zech/Light-and-Dark-Color-Gen",
     liveLink: "https://liliesfood.netlify.app/",
   },
+  {
+    id: 7,
+    title: "Jokadteetechnologies",
+    description: "For Jokadtee Demo Website Preview",
+    img: "/tint-shade-color.png",
+    githubLink: "https://github.com/codexive-zech",
+    liveLink: "https://jokadteetechnologies.com/",
+  },
 ];
 
 export const experience: Experience[] = [
